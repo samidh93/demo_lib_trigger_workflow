@@ -1,23 +1,15 @@
-name: Trigger lib Api
+name: test_lib
 on:
+  workflow_dispatch:
   push:
-    branches:
-      - main
+
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-        #checkout repo code 
-      - name: Check Out Repo 
-        uses: actions/checkout@v2
-        with:
-          submodules: 'true'
-          token: ${{ secrets.TEST }}
-      - name: Build Web App
-        run: |  
-          curl -i -H "Authorization: token ${{ secrets.TEST }}" \
-          https://api.github.com/orgs/theion-batteries/repos   
-      - name: Deploy Web App
+      - uses: actions/checkout@v2
+      - name: get workflow id by trigger
         run: |
-          echo "Deploy Web App"
-          sleep 10s
+          curl -i -H "Authorization: token ${{ secrets.TEST }}" \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/theionSami/demo_lib_trigger_workflow/actions/workflows
