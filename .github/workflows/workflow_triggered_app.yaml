@@ -1,7 +1,6 @@
 name: workflow_triggered_app
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   build:
