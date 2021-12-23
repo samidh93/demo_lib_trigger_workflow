@@ -1,7 +1,6 @@
 name: test_lib
 on:
   workflow_dispatch:
-  push:
 
 jobs:
   build:
