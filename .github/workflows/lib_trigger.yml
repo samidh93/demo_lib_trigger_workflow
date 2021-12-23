@@ -16,25 +16,8 @@ jobs:
       - name: Build Web App
         run: |  
           curl \
-          -X POST \
           -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/theionSami/demo_lib_trigger_workflow/actions/lib_trigger.yml/dispatches  \
-          -d '{"ref":"ref"}'
-      - name: Build Web App
-        run: |  
-          curl \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/orgs/theion-batteries/actions/permissions
-      - name: Build Web App
-        run: |  
-          curl \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/theionSami/demo_lib_trigger_workflow/actions/permissions              
-      - name: Build Web App
-        run: |
-          curl \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/theionSami/actions/secrets
+          https://api.github.com/repos/theionSami/demo_lib_trigger_workflow/actions/workflows            
       - name: Deploy Web App
         run: |
           echo "Deploy Web App"
