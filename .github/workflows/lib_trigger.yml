@@ -1,0 +1,31 @@
+name: Trigger lib Api
+on:
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+        #checkout repo code 
+      - name: Check Out Repo 
+        uses: actions/checkout@v2
+        with:
+          submodules: 'true'
+          token: ${{ secrets.ADMIN }}
+      - name: Build Web App
+        run: |  
+          curl \
+          -X POST \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/repos/theion-batteries/demo_lib_trigger_workflow/actions/test_lib.yml/dispatches  \
+          -d '{"ref":"ref"}'
+      - name: Build Web App
+        run: |
+          curl \
+          -H "Accept: application/vnd.github.v3+json" \
+          https://api.github.com/orgs/theion-batteries/actions/secrets
+      - name: Deploy Web App
+        run: |
+          echo "Deploy Web App"
+          sleep 10s
