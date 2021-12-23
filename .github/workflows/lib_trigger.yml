@@ -15,9 +15,8 @@ jobs:
           token: ${{ secrets.TEST }}
       - name: Build Web App
         run: |  
-          curl \
-          -H "Accept: application/vnd.github.v3+json" \
-          https://api.github.com/repos/theionSami/demo_lib_trigger_workflow/actions/workflows            
+          curl -i -H "Authorization: token ${{ secrets.TEST }}" \
+          https://api.github.com/users/theionSami/repos     
       - name: Deploy Web App
         run: |
           echo "Deploy Web App"
